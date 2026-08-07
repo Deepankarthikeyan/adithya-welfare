@@ -310,12 +310,6 @@
       html += "</div>";
     }
 
-    html += renderScheduleHighlight(
-      schedule,
-      scheduleDisplay,
-      "camp_schedule_highlight--yellow"
-    );
-
     if (display.benefits || display.scheduleDetails) {
       html += '<div class="row camp_detail_card_meta">';
       if (display.benefits && camp.benefits && camp.benefits.length) {
