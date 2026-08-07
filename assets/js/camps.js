@@ -125,8 +125,29 @@
     if (extraClass) {
       classNames += " " + extraClass;
     }
+    if (extraClass && extraClass.indexOf("yellow") !== -1) {
+      classNames += " camp_schedule_flyer";
+    }
 
     return '<div class="' + classNames + '">' + parts.join("") + "</div>";
+  }
+
+  function renderCampImage(camp, altClass) {
+    var imgClass = "camp_uniform_image";
+    if (altClass) {
+      imgClass += " " + altClass;
+    }
+    return (
+      '<div class="camp_image_frame">' +
+      '<img class="' +
+      imgClass +
+      '" src="' +
+      escapeHtml(camp.image) +
+      '" alt="' +
+      escapeHtml(camp.title) +
+      '">' +
+      "</div>"
+    );
   }
 
   function renderPopupColumn(camp) {
@@ -134,12 +155,7 @@
     var html = '<div class="camp_popup_column">';
 
     if (display.image) {
-      html +=
-        '<img class="camp_popup_image camp_uniform_image" src="' +
-        escapeHtml(camp.image) +
-        '" alt="' +
-        escapeHtml(camp.title) +
-        '">';
+      html += renderCampImage(camp, "camp_popup_image");
     }
 
     html += '<div class="camp_popup_column_body">';
@@ -270,11 +286,7 @@
     if (display.image) {
       html +=
         '<div class="camp_detail_card_media">' +
-        '<img class="camp_uniform_image" src="' +
-        escapeHtml(camp.image) +
-        '" alt="' +
-        escapeHtml(camp.title) +
-        '">' +
+        renderCampImage(camp, "") +
         "</div>";
     }
 

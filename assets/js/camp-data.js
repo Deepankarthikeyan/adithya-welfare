@@ -31,7 +31,7 @@ window.AathithyaCamps = {
     time: true,
     tag: true,
     title: true,
-    summary: true,
+    summary: false,
     benefits: false,
     scheduleDetails: false,
     bookNow: true,
@@ -41,7 +41,7 @@ window.AathithyaCamps = {
   popupDisplayDefaults: {
     image: true,
     title: true,
-    summary: true
+    summary: false
   },
 
   popupScheduleDisplay: {
