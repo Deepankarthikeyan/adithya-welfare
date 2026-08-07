@@ -26,12 +26,13 @@ window.AathithyaCamps = {
 
   cardDisplayDefaults: {
     image: true,
-    day: true,
-    date: true,
-    time: true,
+    day: false,
+    date: false,
+    time: false,
     tag: true,
     title: true,
-    summary: false,
+    summary: true,
+    description: true,
     benefits: false,
     scheduleDetails: false,
     bookNow: true,
