@@ -124,9 +124,6 @@
   }
 
   function renderDetailCard(camp) {
-    var descriptionHtml =
-      "<p>" + escapeHtml(camp.description[0]) + "</p>";
-
     return (
       '<div class="camp_detail_card">' +
       '<div class="camp_detail_card_media">' +
@@ -136,24 +133,8 @@
       renderScheduleHighlight(camp) +
       '<span class="camp_card_tag">' + escapeHtml(camp.tag) + "</span>" +
       "<h2>" + escapeHtml(camp.title) + "</h2>" +
-      descriptionHtml +
-      '<div class="row mt-3 camp_detail_card_meta">' +
-      '<div class="col-lg-6">' +
-      '<h4 class="fw-bold">Benefits</h4>' +
-      '<ul class="info_list unordered_list_block">' +
-      renderBenefitsList(camp.benefits) +
-      "</ul>" +
-      "</div>" +
-      '<div class="col-lg-6">' +
-      '<div class="camp_schedule_box">' +
-      "<h3>Camp Schedule</h3>" +
-      '<ul class="info_list unordered_list_block mb-0">' +
-      renderScheduleItems(camp.scheduleItems) +
-      "</ul>" +
-      "</div>" +
-      "</div>" +
-      "</div>" +
-      '<div class="d-flex flex-wrap gap-2 mt-3 camp_detail_card_actions">' +
+      '<p class="camp_detail_card_summary">' + escapeHtml(camp.shortDescription) + "</p>" +
+      '<div class="d-flex flex-wrap gap-2 camp_detail_card_actions">' +
       '<a class="btn btn-primary camp_page_btn" href="' + waLink(camp.whatsappMessage) + '" target="_blank" rel="noopener noreferrer">' +
       '<span class="btn_text" data-text="Book Now">Book Now</span>' +
       '<span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>' +

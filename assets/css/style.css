@@ -4241,93 +4241,95 @@ background-color: var(--bs-primary-bg-subtle);
 }
 .camp_detail_card {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   background: #fff;
   border: 1px solid var(--bs-border-color);
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   box-shadow: var(--bs-box-shadow);
+  max-height: 200px;
 }
 .camp_detail_card_media {
-  flex: 0 0 32%;
-  max-width: 32%;
-  min-height: 180px;
+  flex: 0 0 28%;
+  max-width: 28%;
+  height: 200px;
+  min-height: 0;
 }
 .camp_detail_card_media img {
   width: 100%;
   height: 100%;
-  min-height: 180px;
+  min-height: 0;
   object-fit: cover;
   display: block;
 }
 .camp_detail_card_body {
   flex: 1;
-  padding: 16px 18px;
+  padding: 12px 14px;
+  min-width: 0;
 }
 .camp_detail_card_body h2 {
-  font-size: 20px;
-  line-height: 1.3;
-  margin-bottom: 8px;
+  font-size: 17px;
+  line-height: 1.25;
+  margin-bottom: 4px;
 }
-.camp_detail_card_body p {
-  font-size: 14px;
-  line-height: 1.45;
-  margin-bottom: 0;
+.camp_detail_card_summary {
+  font-size: 13px;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .camp_detail_card_body .camp_schedule_highlight {
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 12px;
 }
-.camp_detail_card_body .camp_highlight_day {
-  font-size: 18px;
+.camp_detail_card_body .camp_highlight_day,
+.camp_detail_card_body .camp_highlight_date,
+.camp_detail_card_body .camp_highlight_time {
+  display: inline;
+  font-size: 13px;
+  line-height: 1.2;
+  margin: 0;
+  font-weight: 700;
 }
 .camp_detail_card_body .camp_highlight_date {
-  font-size: 15px;
+  font-weight: 600;
 }
 .camp_detail_card_body .camp_highlight_time {
-  font-size: 13px;
-}
-.camp_detail_card_meta {
-  margin-top: 12px !important;
-}
-.camp_detail_card_meta h4 {
-  font-size: 15px;
-  margin-bottom: 8px;
-}
-.camp_detail_card_meta .info_list {
-  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.95;
 }
 .camp_card_tag {
   display: inline-block;
   background: var(--bs-primary-bg-subtle);
   color: var(--bs-primary);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 100px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
-.camp_schedule_box {
-  background: var(--bs-primary-bg-subtle);
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin-top: 0;
-}
-.camp_schedule_box h3 {
-  color: var(--bs-primary);
-  font-size: 16px;
-  margin-bottom: 8px;
+.camp_detail_card_actions {
+  margin-top: 0 !important;
 }
 .camp_detail_card_actions .btn,
 .camp_page_btn {
   transform: none !important;
-  font-size: 14px;
+  font-size: 13px;
+  padding: 4px 12px;
 }
 .camp_detail_card_actions .btn .btn_text,
 .camp_page_btn .btn_text {
-  padding: 6px 0 8px;
+  padding: 4px 0 6px;
 }
 .camp_detail_card_actions .btn:hover,
 .camp_page_btn:hover {
@@ -4351,19 +4353,30 @@ background-color: var(--bs-primary-bg-subtle);
 }
 @media (max-width: 991px) {
   .camp_detail_card {
-    flex-direction: column;
+    flex-direction: row;
+    max-height: none;
+    align-items: stretch;
   }
   .camp_detail_card_media {
-    flex: none;
-    max-width: 100%;
-    min-height: 0;
+    flex: 0 0 110px;
+    max-width: 110px;
+    height: auto;
+    min-height: 140px;
   }
   .camp_detail_card_media img {
-    min-height: 160px;
-    height: 160px;
+    min-height: 140px;
+    height: 100%;
   }
   .camp_detail_card_body {
-    padding: 16px 16px;
+    padding: 10px 12px;
+  }
+  .camp_detail_card_body h2 {
+    font-size: 15px;
+  }
+  .camp_detail_card_summary {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+    margin-bottom: 6px;
   }
 }
 /* Today's Camp Page - End */
