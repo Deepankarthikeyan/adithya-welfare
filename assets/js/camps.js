@@ -13,6 +13,29 @@
     });
   }
 
+  function mergeDisplay(camp, type) {
+    var defaults =
+      type === "card"
+        ? config.cardDisplayDefaults || {}
+        : config.popupDisplayDefaults || {};
+    var overrides =
+      type === "card" ? camp.cardDisplay || {} : camp.popupDisplay || {};
+    var merged = {};
+
+    Object.keys(defaults).forEach(function (key) {
+      merged[key] =
+        overrides[key] !== undefined ? overrides[key] : defaults[key];
+    });
+
+    Object.keys(overrides).forEach(function (key) {
+      if (merged[key] === undefined) {
+        merged[key] = overrides[key];
+      }
+    });
+
+    return merged;
+  }
+
   function waLink(message) {
     return (
       "https://wa.me/+" +
@@ -28,27 +51,61 @@
     return div.innerHTML;
   }
 
-  function renderScheduleHighlight(camp) {
+  function renderScheduleHighlight(camp, display) {
+    var parts = [];
+
+    if (display.day) {
+      parts.push(
+        '<span class="camp_highlight_day">' + escapeHtml(camp.day) + "</span>"
+      );
+    }
+    if (display.date) {
+      parts.push(
+        '<span class="camp_highlight_date">' + escapeHtml(camp.date) + "</span>"
+      );
+    }
+    if (display.time) {
+      parts.push(
+        '<span class="camp_highlight_time">' + escapeHtml(camp.time) + "</span>"
+      );
+    }
+
+    if (parts.length === 0) {
+      return "";
+    }
+
     return (
-      '<div class="camp_schedule_highlight">' +
-      '<span class="camp_highlight_day">' + escapeHtml(camp.day) + "</span>" +
-      '<span class="camp_highlight_date">' + escapeHtml(camp.date) + "</span>" +
-      '<span class="camp_highlight_time">' + escapeHtml(camp.time) + "</span>" +
-      "</div>"
+      '<div class="camp_schedule_highlight">' + parts.join("") + "</div>"
     );
   }
 
   function renderPopupColumn(camp) {
-    return (
+    var display = mergeDisplay(camp, "popup");
+    var html =
       '<div class="camp_popup_column">' +
-      '<img class="camp_popup_image" src="' + escapeHtml(camp.image) + '" alt="' + escapeHtml(camp.title) + '">' +
-      renderScheduleHighlight(camp) +
-      '<div class="camp_popup_column_body">' +
-      '<h3 class="camp_popup_col_title">' + escapeHtml(camp.title) + "</h3>" +
-      '<p class="camp_popup_col_text">' + escapeHtml(camp.shortDescription) + "</p>" +
-      "</div>" +
-      "</div>"
-    );
+      (display.image
+        ? '<img class="camp_popup_image" src="' +
+          escapeHtml(camp.image) +
+          '" alt="' +
+          escapeHtml(camp.title) +
+          '">'
+        : "") +
+      renderScheduleHighlight(camp, display) +
+      '<div class="camp_popup_column_body">';
+
+    if (display.title) {
+      html +=
+        '<h3 class="camp_popup_col_title">' + escapeHtml(camp.title) + "</h3>";
+    }
+    if (display.summary) {
+      html +=
+        '<p class="camp_popup_col_text">' +
+        escapeHtml(camp.shortDescription) +
+        "</p>";
+    }
+
+    html += "</div></div>";
+    return html;
   }
 
   function renderPopup() {
@@ -73,12 +130,18 @@
       '<div class="camp_popup_header">' +
       '<span class="camp_popup_badge" id="todayCampModalLabel">Today\'s Camp</span>' +
       "</div>" +
-      '<div class="camp_popup_grid camp-cols-' + colCount + '">' +
+      '<div class="camp_popup_grid camp-cols-' +
+      colCount +
+      '">' +
       columnsHtml +
       "</div>" +
       '<div class="camp_popup_footer">' +
       '<div class="camp_popup_buttons">' +
-      '<a class="btn btn-primary" href="' + waLink("Hi, I would like to book for today's camp at Aathithya Welfare Centre.") + '" target="_blank" rel="noopener noreferrer">' +
+      '<a class="btn btn-primary" href="' +
+      waLink(
+        "Hi, I would like to book for today's camp at Aathithya Welfare Centre."
+      ) +
+      '" target="_blank" rel="noopener noreferrer">' +
       '<span class="btn_text" data-text="Book Now">Book Now</span>' +
       '<span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>' +
       "</a>" +
@@ -103,7 +166,9 @@
         return (
           "<li>" +
           '<span class="info_icon"><i class="fa-light fa-circle-check"></i></span>' +
-          '<span class="info_text">' + escapeHtml(item) + "</span>" +
+          '<span class="info_text">' +
+          escapeHtml(item) +
+          "</span>" +
           "</li>"
         );
       })
@@ -115,8 +180,14 @@
       .map(function (item) {
         return (
           "<li>" +
-          '<span class="info_icon"><i class="fa-light ' + escapeHtml(item.icon) + '"></i></span>' +
-          '<span class="info_text"><strong>' + escapeHtml(item.label) + ":</strong> " + escapeHtml(item.value) + "</span>" +
+          '<span class="info_icon"><i class="fa-light ' +
+          escapeHtml(item.icon) +
+          '"></i></span>' +
+          '<span class="info_text"><strong>' +
+          escapeHtml(item.label) +
+          ":</strong> " +
+          escapeHtml(item.value) +
+          "</span>" +
           "</li>"
         );
       })
@@ -124,29 +195,94 @@
   }
 
   function renderDetailCard(camp) {
-    return (
-      '<div class="camp_detail_card">' +
-      '<div class="camp_detail_card_media">' +
-      '<img src="' + escapeHtml(camp.image) + '" alt="' + escapeHtml(camp.title) + '">' +
-      "</div>" +
-      '<div class="camp_detail_card_body">' +
-      renderScheduleHighlight(camp) +
-      '<span class="camp_card_tag">' + escapeHtml(camp.tag) + "</span>" +
-      "<h2>" + escapeHtml(camp.title) + "</h2>" +
-      '<p class="camp_detail_card_summary">' + escapeHtml(camp.shortDescription) + "</p>" +
-      '<div class="d-flex flex-wrap gap-2 camp_detail_card_actions">' +
-      '<a class="btn btn-primary camp_page_btn" href="' + waLink(camp.whatsappMessage) + '" target="_blank" rel="noopener noreferrer">' +
-      '<span class="btn_text" data-text="Book Now">Book Now</span>' +
-      '<span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>' +
-      "</a>" +
-      '<a class="btn btn-outline-primary camp_page_btn" href="' + escapeHtml(camp.detailLink) + '">' +
-      '<span class="btn_text" data-text="Full Details">Full Details</span>' +
-      '<span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>' +
-      "</a>" +
-      "</div>" +
-      "</div>" +
-      "</div>"
-    );
+    var display = mergeDisplay(camp, "card");
+    var html =
+      '<div class="camp_detail_card' +
+      (display.image ? "" : " camp_detail_card--no-image") +
+      '">';
+
+    if (display.image) {
+      html +=
+        '<div class="camp_detail_card_media">' +
+        '<img src="' +
+        escapeHtml(camp.image) +
+        '" alt="' +
+        escapeHtml(camp.title) +
+        '">' +
+        "</div>";
+    }
+
+    html += '<div class="camp_detail_card_body">';
+    html += renderScheduleHighlight(camp, display);
+
+    if (display.tag) {
+      html +=
+        '<span class="camp_card_tag">' + escapeHtml(camp.tag) + "</span>";
+    }
+    if (display.title) {
+      html += "<h2>" + escapeHtml(camp.title) + "</h2>";
+    }
+    if (display.summary) {
+      html +=
+        '<p class="camp_detail_card_summary">' +
+        escapeHtml(camp.shortDescription) +
+        "</p>";
+    }
+
+    if (display.benefits || display.scheduleDetails) {
+      html += '<div class="row camp_detail_card_meta">';
+      if (display.benefits && camp.benefits && camp.benefits.length) {
+        html +=
+          '<div class="col-lg-6">' +
+          '<h4 class="fw-bold">Benefits</h4>' +
+          '<ul class="info_list unordered_list_block">' +
+          renderBenefitsList(camp.benefits) +
+          "</ul>" +
+          "</div>";
+      }
+      if (
+        display.scheduleDetails &&
+        camp.scheduleItems &&
+        camp.scheduleItems.length
+      ) {
+        html +=
+          '<div class="col-lg-6">' +
+          '<div class="camp_schedule_box">' +
+          "<h3>Camp Schedule</h3>" +
+          '<ul class="info_list unordered_list_block mb-0">' +
+          renderScheduleItems(camp.scheduleItems) +
+          "</ul>" +
+          "</div>" +
+          "</div>";
+      }
+      html += "</div>";
+    }
+
+    if (display.bookNow || display.learnMore) {
+      html += '<div class="d-flex flex-wrap gap-2 camp_detail_card_actions">';
+      if (display.bookNow) {
+        html +=
+          '<a class="btn btn-primary camp_page_btn" href="' +
+          waLink(camp.whatsappMessage) +
+          '" target="_blank" rel="noopener noreferrer">' +
+          '<span class="btn_text" data-text="Book Now">Book Now</span>' +
+          '<span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>' +
+          "</a>";
+      }
+      if (display.learnMore) {
+        html +=
+          '<a class="btn btn-outline-primary camp_page_btn" href="' +
+          escapeHtml(camp.detailLink) +
+          '">' +
+          '<span class="btn_text" data-text="Full Details">Full Details</span>' +
+          '<span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>' +
+          "</a>";
+      }
+      html += "</div>";
+    }
+
+    html += "</div></div>";
+    return html;
   }
 
   function renderCampPage() {

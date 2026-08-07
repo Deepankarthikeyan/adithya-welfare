@@ -1,12 +1,42 @@
 /**
  * Camp configuration — edit this file to manage camps.
  *
- * Set active: true to show a camp in the popup and learn-more page.
- * Set active: false to hide it.
- * The popup automatically uses 1, 2, or 3 columns based on how many camps are active.
+ * CAMP VISIBILITY
+ *   active: true  → show camp in popup and learn-more page
+ *   active: false → hide entire camp
+ *
+ * CARD CUSTOMIZATION (learn-more page) — per camp, set cardDisplay overrides.
+ *   Each field: true = show, false = hide
+ *   Defaults are in cardDisplayDefaults below.
+ *
+ * POPUP CUSTOMIZATION — per camp, set popupDisplay overrides.
+ *   Defaults are in popupDisplayDefaults below.
  */
 window.AathithyaCamps = {
   whatsappNumber: "918925600489",
+
+  cardDisplayDefaults: {
+    image: true,
+    day: true,
+    date: true,
+    time: true,
+    tag: true,
+    title: true,
+    summary: true,
+    benefits: false,
+    scheduleDetails: false,
+    bookNow: true,
+    learnMore: true
+  },
+
+  popupDisplayDefaults: {
+    image: true,
+    day: true,
+    date: true,
+    time: true,
+    title: true,
+    summary: true
+  },
 
   camps: [
     {
@@ -26,6 +56,10 @@ window.AathithyaCamps = {
       time: "10:00 AM – 4:00 PM",
       whatsappMessage: "Hi, I would like to book Swarnapashnam Camp for my child.",
       detailLink: "swarnapashnam.html",
+      cardDisplay: {
+        benefits: false,
+        scheduleDetails: false
+      },
       benefits: [
         "Enhances natural immunity in children",
         "Supports healthy growth and development",
@@ -55,6 +89,10 @@ window.AathithyaCamps = {
       time: "9:00 AM – 1:00 PM",
       whatsappMessage: "Hi, I would like to book Kalikkam Eye Camp session.",
       detailLink: "kalikkam.html",
+      cardDisplay: {
+        benefits: false,
+        scheduleDetails: false
+      },
       benefits: [
         "Helps reduce eye strain and tiredness",
         "Supports natural visual clarity",
@@ -83,6 +121,10 @@ window.AathithyaCamps = {
       time: "11:00 AM – 3:00 PM",
       whatsappMessage: "Hi, I would like to book the Holistic Wellness Camp.",
       detailLink: "contact.html",
+      cardDisplay: {
+        benefits: false,
+        scheduleDetails: false
+      },
       benefits: [
         "Holistic Siddha consultation",
         "Personalised wellness guidance",
