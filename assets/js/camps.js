@@ -200,7 +200,7 @@
       '<i class="fa-solid fa-xmark"></i>' +
       "</button>" +
       '<div class="camp_popup_header">' +
-      '<span class="camp_popup_badge" id="todayCampModalLabel">Today\'s Camp</span>' +
+      '<h2 class="camp_popup_badge" id="todayCampModalLabel">Today\'s Camp</h2>' +
       "</div>" +
       '<div class="camp_popup_grid camp-cols-' +
       colCount +
