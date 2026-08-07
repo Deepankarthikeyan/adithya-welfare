@@ -4030,6 +4030,7 @@ background-color: var(--bs-primary-bg-subtle);
   overflow: hidden;
   box-shadow: 0 24px 48px rgba(65, 19, 18, 0.18);
   max-height: calc(100dvh - 24px);
+  background: #fff;
 }
 .camp_popup_modal .modal-body {
   padding: 0;
