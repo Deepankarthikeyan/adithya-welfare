@@ -268,12 +268,6 @@
 
   function renderDetailCard(camp) {
     var display = mergeDisplay(camp, "card");
-    var schedule = getEventSchedule(camp);
-    var scheduleDisplay = {
-      date: display.date,
-      day: display.day,
-      time: display.time
-    };
 
     var html =
       '<div class="camp_detail_card' +

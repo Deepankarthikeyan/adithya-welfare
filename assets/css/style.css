@@ -4306,6 +4306,10 @@ background-color: var(--bs-primary-bg-subtle);
 /* Today's Camp Popup - End */
 
 /* Today's Camp Page - Start */
+#campDetailsList .camp_schedule_highlight,
+#campDetailsList .camp_schedule_flyer {
+  display: none !important;
+}
 #campDetailsList {
   max-width: 860px;
   margin: 0 auto;

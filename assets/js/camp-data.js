@@ -6,7 +6,7 @@
  *   active: false → hide entire camp
  *
  * EVENT SCHEDULE (yellow date / day / time block)
- *   Edit eventSchedule for the shared camp date shown in popup and cards.
+ *   Edit eventSchedule for the shared camp date shown in the homepage popup only.
  *
  * CARD / POPUP CUSTOMIZATION
  *   cardDisplayDefaults / popupDisplayDefaults — global show/hide
