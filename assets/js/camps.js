@@ -302,14 +302,6 @@
         escapeHtml(camp.shortDescription) +
         "</p>";
     }
-    if (display.description && camp.description && camp.description.length) {
-      html += '<div class="camp_detail_card_description">';
-      camp.description.forEach(function (paragraph) {
-        html +=
-          "<p>" + escapeHtml(paragraph) + "</p>";
-      });
-      html += "</div>";
-    }
 
     html += renderScheduleHighlight(
       schedule,
