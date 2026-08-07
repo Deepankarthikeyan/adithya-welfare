@@ -4101,7 +4101,7 @@ background-color: var(--bs-primary-bg-subtle);
   flex-shrink: 0;
 }
 .camp_popup_column .camp_image_frame {
-  height: 100px;
+  height: 125px;
 }
 .camp_popup_column_body {
   padding: 12px 14px 14px;
@@ -4284,7 +4284,7 @@ background-color: var(--bs-primary-bg-subtle);
     border-bottom: none;
   }
   .camp_popup_column .camp_image_frame {
-    height: 85px;
+    height: 105px;
   }
   .camp_schedule_flyer .camp_highlight_date {
     font-size: 24px;
@@ -4333,7 +4333,7 @@ background-color: var(--bs-primary-bg-subtle);
 }
 .camp_detail_card_media .camp_image_frame {
   width: 200px;
-  height: 122px;
+  height: 145px;
 }
 .camp_detail_card_media img,
 .camp_detail_card_media .camp_uniform_image {
@@ -4495,7 +4495,7 @@ background-color: var(--bs-primary-bg-subtle);
   }
   .camp_detail_card_media .camp_image_frame {
     width: 130px;
-    height: 80px;
+    height: 95px;
   }
   .camp_detail_card_body {
     padding: 12px 12px;
