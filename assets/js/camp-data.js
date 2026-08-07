@@ -6,7 +6,7 @@
  *   active: false → hide entire camp
  *
  * EVENT SCHEDULE (yellow date / day / time block)
- *   Edit eventSchedule for the shared camp date shown in popup and cards.
+ *   Edit eventSchedule for the shared camp date shown in the homepage popup only.
  *
  * CARD / POPUP CUSTOMIZATION
  *   cardDisplayDefaults / popupDisplayDefaults — global show/hide
@@ -26,12 +26,13 @@ window.AathithyaCamps = {
 
   cardDisplayDefaults: {
     image: true,
-    day: true,
-    date: true,
-    time: true,
+    day: false,
+    date: false,
+    time: false,
     tag: true,
     title: true,
-    summary: false,
+    summary: true,
+    description: true,
     benefits: false,
     scheduleDetails: false,
     bookNow: true,
@@ -60,8 +61,8 @@ window.AathithyaCamps = {
       shortDescription:
         "Traditional Siddha Kalikkam therapy camp for natural eye health and protection.",
       description: [
-        "Kalikkam is a traditional Siddha external therapy used to support and protect eye health. It is a safe, non-invasive procedure performed by trained Siddha practitioners using time-tested herbal preparations.",
-        "Our eye protection camps make this classical Siddha practice accessible, helping reduce eye strain and support natural eye function."
+        "Kalikkam is a traditional Siddha external therapy used to support and protect eye health. Though applied around the eyes, it is a safe, non-invasive procedure performed by trained Siddha practitioners using time-tested herbal preparations.",
+        "In Siddha medicine, the eyes are closely connected to the nervous system and brain, making eye care an important part of overall health. This camp helps reduce eye strain, balance body heat, and support natural eye function — especially helpful for those with prolonged screen exposure."
       ],
       image: "assets/images/about/kalikkam.jpg",
       whatsappMessage: "Hi, I would like to book Kalikkam Eye Protection Camp.",
@@ -86,8 +87,8 @@ window.AathithyaCamps = {
       shortDescription:
         "Siddha foot reflexology camp supporting balance, relaxation, and holistic wellness.",
       description: [
-        "Foot reflexology is a therapeutic practice that applies gentle pressure to specific points on the feet to support overall body wellness and relaxation.",
-        "At Aathithya Welfare Centre, this camp offers traditional foot pressure therapy guided by experienced practitioners."
+        "Foot Reflexology is a therapeutic practice that applies gentle pressure to specific reflex points on the feet. These points are connected to organs, glands, and systems of the body, helping stimulate nerve pathways, improve circulation, and support natural wellness.",
+        "At Aathithya Welfare Centre, this camp offers traditional foot pressure therapy guided by experienced practitioners. It promotes deep relaxation, restores energy balance, and supports overall physical, mental, and emotional well-being."
       ],
       image: "assets/images/about/foot-reflexology-therapy.jpg",
       whatsappMessage: "Hi, I would like to book Foot Reflexology Therapy camp.",
@@ -112,8 +113,8 @@ window.AathithyaCamps = {
       shortDescription:
         "Traditional Nasyam Siddha medicine camp for nasal therapy and holistic healing.",
       description: [
-        "Nasyam is a classical Siddha and Ayurvedic nasal therapy that administers medicated oils or preparations through the nostrils to support head, neck, and respiratory wellness.",
-        "This camp offers authentic Siddha Nasyam treatment following traditional guidelines under expert supervision."
+        "Nasyam is a classical Siddha nasal therapy that administers medicated oils or herbal preparations through the nostrils to support head, neck, and respiratory wellness. It is a traditional Panchakarma procedure used to cleanse and rejuvenate the upper respiratory tract.",
+        "This camp offers authentic Siddha Nasyam treatment following classical guidelines under expert supervision. It helps balance the body's doshas, supports mental clarity, and promotes holistic healing for head, neck, and respiratory wellness."
       ],
       image: "assets/images/about/nasyam-camp.jpg",
       whatsappMessage: "Hi, I would like to book Nasyam Siddha Medicine Camp.",
