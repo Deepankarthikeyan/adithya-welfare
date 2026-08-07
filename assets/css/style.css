@@ -4323,7 +4323,8 @@ background-color: var(--bs-primary-bg-subtle);
   font-size: 13px;
   margin-bottom: 0;
 }
-.camp_detail_card:not(:has(.camp_detail_card_media)) .camp_detail_card_body {
+.camp_detail_card:not(:has(.camp_detail_card_media)),
+.camp_detail_card--no-image .camp_detail_card_body {
   width: 100%;
 }
 .camp_card_tag {
