@@ -69,7 +69,7 @@ window.AathithyaCamps = {
     },
     {
       id: "wellness-camp",
-      active: false,
+      active: true,
       title: "Holistic Wellness Camp",
       tag: "Special Camp",
       shortDescription:
