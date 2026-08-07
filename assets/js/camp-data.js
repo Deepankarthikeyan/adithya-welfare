@@ -5,15 +5,24 @@
  *   active: true  → show camp in popup and learn-more page
  *   active: false → hide entire camp
  *
- * CARD CUSTOMIZATION (learn-more page) — per camp, set cardDisplay overrides.
- *   Each field: true = show, false = hide
- *   Defaults are in cardDisplayDefaults below.
+ * EVENT SCHEDULE (yellow date / day / time block)
+ *   Edit eventSchedule for the shared camp date shown in popup and cards.
  *
- * POPUP CUSTOMIZATION — per camp, set popupDisplay overrides.
- *   Defaults are in popupDisplayDefaults below.
+ * CARD / POPUP CUSTOMIZATION
+ *   cardDisplayDefaults / popupDisplayDefaults — global show/hide
+ *   Per camp: cardDisplay / popupDisplay overrides
  */
 window.AathithyaCamps = {
   whatsappNumber: "918925600489",
+
+  eventSchedule: {
+    date: "08th August 2026",
+    day: "Saturday",
+    dayTamil: "சனிக்கிழமை",
+    time: "10 AM to 6 PM"
+  },
+
+  scheduleDisplayOrder: ["date", "day", "time"],
 
   cardDisplayDefaults: {
     image: true,
@@ -31,68 +40,32 @@ window.AathithyaCamps = {
 
   popupDisplayDefaults: {
     image: true,
-    day: true,
-    date: true,
-    time: true,
     title: true,
     summary: true
   },
 
+  popupScheduleDisplay: {
+    date: true,
+    day: true,
+    time: true
+  },
+
   camps: [
     {
-      id: "swarnapashnam",
+      id: "kalikkam-eye-camp",
       active: true,
-      title: "Swarnapashnam Camp for Children",
-      tag: "Children's Wellness Camp",
+      title: "Kalikkam – Eye Protection Camp",
+      titleTamil: "கலிக்கம் - கண் பாதுகாப்பு முகாம்",
+      tag: "Siddha Eye Care Camp",
       shortDescription:
-        "Monthly Siddha wellness camp for children ages 1–16 on Poosa Nathchitram.",
+        "Traditional Siddha Kalikkam therapy camp for natural eye health and protection.",
       description: [
-        "Swarnapashnam (Swarna Prashana) is an ancient Siddha and Ayurvedic wellness practice specially designed for children. It involves the careful administration of purified gold blended with select herbal formulations to support immunity, growth, memory, and overall development.",
-        "At Aathithya Wellness Centre, this sacred tradition is offered as a monthly camp conducted on Poosa Nathchitram, a highly auspicious timing believed to enhance the medicine's effectiveness according to Siddha wisdom."
-      ],
-      image: "assets/images/about/swarnapashnam-camp.png",
-      day: "Saturday",
-      date: "7 August 2026",
-      time: "10:00 AM – 4:00 PM",
-      whatsappMessage: "Hi, I would like to book Swarnapashnam Camp for my child.",
-      detailLink: "swarnapashnam.html",
-      cardDisplay: {
-        benefits: false,
-        scheduleDetails: false
-      },
-      benefits: [
-        "Enhances natural immunity in children",
-        "Supports healthy growth and development",
-        "Improves memory, concentration, and learning ability",
-        "Helps reduce frequent infections and illnesses"
-      ],
-      scheduleItems: [
-        { icon: "fa-calendar", label: "Frequency", value: "Monthly on Poosa Nathchitram" },
-        { icon: "fa-child", label: "Age Group", value: "Children aged 1 to 16 years" },
-        { icon: "fa-location-dot", label: "Location", value: "Aathithya Welfare Centre, Coimbatore" }
-      ]
-    },
-    {
-      id: "kalikkam",
-      active: true,
-      title: "Free Eye Camp – Kalikkam",
-      tag: "Free Eye Care Camp",
-      shortDescription:
-        "Traditional Siddha Kalikkam eye-care camp supporting natural eye health.",
-      description: [
-        "Kalikkam is a traditional Siddha external therapy used to support and protect eye health. Though applied around the eyes, it is a safe, non-invasive procedure performed by trained Siddha practitioners using time-tested herbal preparations.",
-        "Our free eye camps make this classical Siddha eye-care practice accessible to the community, helping reduce eye strain, balance body heat, and support natural eye function."
+        "Kalikkam is a traditional Siddha external therapy used to support and protect eye health. It is a safe, non-invasive procedure performed by trained Siddha practitioners using time-tested herbal preparations.",
+        "Our eye protection camps make this classical Siddha practice accessible, helping reduce eye strain and support natural eye function."
       ],
       image: "assets/images/about/kalikkam.jpg",
-      day: "Friday",
-      date: "7 August 2026",
-      time: "9:00 AM – 1:00 PM",
-      whatsappMessage: "Hi, I would like to book Kalikkam Eye Camp session.",
+      whatsappMessage: "Hi, I would like to book Kalikkam Eye Protection Camp.",
       detailLink: "kalikkam.html",
-      cardDisplay: {
-        benefits: false,
-        scheduleDetails: false
-      },
       benefits: [
         "Helps reduce eye strain and tiredness",
         "Supports natural visual clarity",
@@ -100,38 +73,59 @@ window.AathithyaCamps = {
         "Promotes relaxation of eye-related nerves"
       ],
       scheduleItems: [
-        { icon: "fa-eye", label: "Therapy", value: "Traditional Siddha Kalikkam eye care" },
-        { icon: "fa-users", label: "For", value: "Adults with eye strain or screen fatigue" },
+        { icon: "fa-eye", label: "Therapy", value: "Kalikkam – Siddha eye care" },
         { icon: "fa-location-dot", label: "Location", value: "Aathithya Welfare Centre, Coimbatore" }
       ]
     },
     {
-      id: "wellness-camp",
+      id: "foot-reflexology-camp",
       active: true,
-      title: "Holistic Wellness Camp",
-      tag: "Special Camp",
+      title: "Foot Reflexology Therapy",
+      titleTamil: "பாத அழுத்த சிகிச்சை",
+      tag: "Foot Pressure Therapy Camp",
       shortDescription:
-        "A combined Siddha wellness camp with consultations and therapies.",
+        "Siddha foot reflexology camp supporting balance, relaxation, and holistic wellness.",
       description: [
-        "A special wellness camp offering Siddha consultations, herbal guidance, and holistic healing sessions for the whole family."
+        "Foot reflexology is a therapeutic practice that applies gentle pressure to specific points on the feet to support overall body wellness and relaxation.",
+        "At Aathithya Welfare Centre, this camp offers traditional foot pressure therapy guided by experienced practitioners."
       ],
       image: "assets/images/about/foot-reflexology-therapy.jpg",
-      day: "Sunday",
-      date: "10 August 2026",
-      time: "11:00 AM – 3:00 PM",
-      whatsappMessage: "Hi, I would like to book the Holistic Wellness Camp.",
-      detailLink: "contact.html",
-      cardDisplay: {
-        benefits: false,
-        scheduleDetails: false
-      },
+      whatsappMessage: "Hi, I would like to book Foot Reflexology Therapy camp.",
+      detailLink: "foot-reflexology.html",
       benefits: [
-        "Holistic Siddha consultation",
-        "Personalised wellness guidance",
-        "Traditional therapy options"
+        "Promotes relaxation and stress relief",
+        "Supports natural energy balance",
+        "Helps improve circulation",
+        "Complements holistic Siddha wellness"
       ],
       scheduleItems: [
-        { icon: "fa-calendar", label: "Frequency", value: "Special seasonal camp" },
+        { icon: "fa-shoe-prints", label: "Therapy", value: "Foot reflexology / pressure therapy" },
+        { icon: "fa-location-dot", label: "Location", value: "Aathithya Welfare Centre, Coimbatore" }
+      ]
+    },
+    {
+      id: "nasyam-camp",
+      active: true,
+      title: "Nasyam – Siddha Medicine Camp",
+      titleTamil: "நசியம் - சித்த மருத்துவ முகாம்",
+      tag: "Siddha Nasal Therapy Camp",
+      shortDescription:
+        "Traditional Nasyam Siddha medicine camp for nasal therapy and holistic healing.",
+      description: [
+        "Nasyam is a classical Siddha and Ayurvedic nasal therapy that administers medicated oils or preparations through the nostrils to support head, neck, and respiratory wellness.",
+        "This camp offers authentic Siddha Nasyam treatment following traditional guidelines under expert supervision."
+      ],
+      image: "assets/images/gallery/siddha-medicine-and-treatments.jpg",
+      whatsappMessage: "Hi, I would like to book Nasyam Siddha Medicine Camp.",
+      detailLink: "authentic-siddha-treatment-aathitya-wellness-centre.html",
+      benefits: [
+        "Supports head and neck wellness",
+        "Traditional Siddha nasal therapy",
+        "Helps balance doshas naturally",
+        "Conducted by trained Siddha practitioners"
+      ],
+      scheduleItems: [
+        { icon: "fa-leaf", label: "Therapy", value: "Nasyam – Siddha nasal treatment" },
         { icon: "fa-location-dot", label: "Location", value: "Aathithya Welfare Centre, Coimbatore" }
       ]
     }

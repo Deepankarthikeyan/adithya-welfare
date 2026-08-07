@@ -13,6 +13,13 @@
     });
   }
 
+  function getEventSchedule(camp) {
+    if (camp && camp.date) {
+      return camp;
+    }
+    return config.eventSchedule || {};
+  }
+
   function mergeDisplay(camp, type) {
     var defaults =
       type === "card"
@@ -36,6 +43,21 @@
     return merged;
   }
 
+  function getScheduleDisplay(type) {
+    if (type === "popup") {
+      return config.popupScheduleDisplay || {
+        date: true,
+        day: true,
+        time: true
+      };
+    }
+    return {
+      date: config.cardDisplayDefaults.date,
+      day: config.cardDisplayDefaults.day,
+      time: config.cardDisplayDefaults.time
+    };
+  }
+
   function waLink(message) {
     return (
       "https://wa.me/+" +
@@ -51,51 +73,79 @@
     return div.innerHTML;
   }
 
-  function renderScheduleHighlight(camp, display) {
+  function renderCampTitle(camp, tagName, className) {
+    var html = "<" + tagName + " class=\"" + className + "\">";
+    html += escapeHtml(camp.title);
+    if (camp.titleTamil) {
+      html +=
+        '<span class="camp_title_tamil">' + escapeHtml(camp.titleTamil) + "</span>";
+    }
+    html += "</" + tagName + ">";
+    return html;
+  }
+
+  function renderScheduleHighlight(schedule, display, extraClass) {
+    if (!schedule) {
+      return "";
+    }
+
+    var order = config.scheduleDisplayOrder || ["date", "day", "time"];
     var parts = [];
 
-    if (display.day) {
-      parts.push(
-        '<span class="camp_highlight_day">' + escapeHtml(camp.day) + "</span>"
-      );
-    }
-    if (display.date) {
-      parts.push(
-        '<span class="camp_highlight_date">' + escapeHtml(camp.date) + "</span>"
-      );
-    }
-    if (display.time) {
-      parts.push(
-        '<span class="camp_highlight_time">' + escapeHtml(camp.time) + "</span>"
-      );
-    }
+    order.forEach(function (key) {
+      if (key === "date" && display.date && schedule.date) {
+        parts.push(
+          '<span class="camp_highlight_date">' +
+            escapeHtml(schedule.date) +
+            "</span>"
+        );
+      }
+      if (key === "day" && display.day) {
+        var dayText = schedule.dayTamil || schedule.day || "";
+        if (dayText) {
+          parts.push(
+            '<span class="camp_highlight_day">' + escapeHtml(dayText) + "</span>"
+          );
+        }
+      }
+      if (key === "time" && display.time && schedule.time) {
+        parts.push(
+          '<span class="camp_highlight_time">' +
+            escapeHtml(schedule.time) +
+            "</span>"
+        );
+      }
+    });
 
     if (parts.length === 0) {
       return "";
     }
 
-    return (
-      '<div class="camp_schedule_highlight">' + parts.join("") + "</div>"
-    );
+    var classNames = "camp_schedule_highlight";
+    if (extraClass) {
+      classNames += " " + extraClass;
+    }
+
+    return '<div class="' + classNames + '">' + parts.join("") + "</div>";
   }
 
   function renderPopupColumn(camp) {
     var display = mergeDisplay(camp, "popup");
-    var html =
-      '<div class="camp_popup_column">' +
-      (display.image
-        ? '<img class="camp_popup_image" src="' +
-          escapeHtml(camp.image) +
-          '" alt="' +
-          escapeHtml(camp.title) +
-          '">'
-        : "") +
-      renderScheduleHighlight(camp, display) +
-      '<div class="camp_popup_column_body">';
+    var html = '<div class="camp_popup_column">';
+
+    if (display.image) {
+      html +=
+        '<img class="camp_popup_image" src="' +
+        escapeHtml(camp.image) +
+        '" alt="' +
+        escapeHtml(camp.title) +
+        '">';
+    }
+
+    html += '<div class="camp_popup_column_body">';
 
     if (display.title) {
-      html +=
-        '<h3 class="camp_popup_col_title">' + escapeHtml(camp.title) + "</h3>";
+      html += renderCampTitle(camp, "h3", "camp_popup_col_title");
     }
     if (display.summary) {
       html +=
@@ -123,6 +173,12 @@
       .map(renderPopupColumn)
       .join("");
 
+    var scheduleHtml = renderScheduleHighlight(
+      config.eventSchedule,
+      getScheduleDisplay("popup"),
+      "camp_schedule_highlight--yellow"
+    );
+
     inner.innerHTML =
       '<button type="button" class="camp_popup_close" data-bs-dismiss="modal" aria-label="Close">' +
       '<i class="fa-solid fa-xmark"></i>' +
@@ -135,6 +191,9 @@
       '">' +
       columnsHtml +
       "</div>" +
+      (scheduleHtml
+        ? '<div class="camp_popup_shared_schedule">' + scheduleHtml + "</div>"
+        : "") +
       '<div class="camp_popup_footer">' +
       '<div class="camp_popup_buttons">' +
       '<a class="btn btn-primary" href="' +
@@ -196,6 +255,13 @@
 
   function renderDetailCard(camp) {
     var display = mergeDisplay(camp, "card");
+    var schedule = getEventSchedule(camp);
+    var scheduleDisplay = {
+      date: display.date,
+      day: display.day,
+      time: display.time
+    };
+
     var html =
       '<div class="camp_detail_card' +
       (display.image ? "" : " camp_detail_card--no-image") +
@@ -213,14 +279,13 @@
     }
 
     html += '<div class="camp_detail_card_body">';
-    html += renderScheduleHighlight(camp, display);
 
     if (display.tag) {
       html +=
         '<span class="camp_card_tag">' + escapeHtml(camp.tag) + "</span>";
     }
     if (display.title) {
-      html += "<h2>" + escapeHtml(camp.title) + "</h2>";
+      html += renderCampTitle(camp, "h2", "camp_detail_card_title");
     }
     if (display.summary) {
       html +=
@@ -228,6 +293,12 @@
         escapeHtml(camp.shortDescription) +
         "</p>";
     }
+
+    html += renderScheduleHighlight(
+      schedule,
+      scheduleDisplay,
+      "camp_schedule_highlight--yellow"
+    );
 
     if (display.benefits || display.scheduleDetails) {
       html += '<div class="row camp_detail_card_meta">';
