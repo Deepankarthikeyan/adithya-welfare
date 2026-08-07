@@ -15,7 +15,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
-  <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
@@ -28,7 +27,6 @@
 
     <link rel="canonical" href="https://aathithyawelfare.com/today-camp" />
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-96QT2K8D18"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -37,18 +35,12 @@
       gtag('config', 'G-96QT2K8D18');
     </script>
 
-    <!-- Header and Menu Active JS -->
     <script>
       fetch("header.html")
         .then(res => res.text())
         .then(data => {
           document.getElementById("header").innerHTML = data;
-
-          const currentPage = window.location.pathname
-            .split("/")
-            .pop()
-            .replace(".html", "") || "index";
-
+          const currentPage = window.location.pathname.split("/").pop().replace(".html", "") || "index";
           document.querySelectorAll(".main-nav a").forEach(link => {
             if (link.dataset.page === currentPage) {
               link.classList.add("active");
@@ -88,169 +80,29 @@
 
         <section class="service_details_section section_space_lg">
           <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-10">
-                <div class="details_content text-center mb-5">
-                  <p class="camp_popup_date" id="todayCampPageDate"></p>
-                  <p>At Aathithya Welfare Centre, we regularly conduct Siddha wellness camps to make authentic traditional healing accessible to families across Coimbatore. Our camps are led by experienced practitioners and follow classical Siddha guidelines for safety, authenticity, and holistic care.</p>
-                  <a class="btn btn-primary mt-3" href="https://wa.me/+918925600489?text=Hi, I would like to book for today's camp at Aathithya Welfare Centre." target="_blank" rel="noopener noreferrer">
-                    <span class="btn_text" data-text="Book Now">Book Now</span>
-                    <span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>
-                  </a>
-                </div>
+            <div class="row justify-content-center mb-4">
+              <div class="col-lg-10 text-center">
+                <p>At Aathithya Welfare Centre, we regularly conduct Siddha wellness camps to make authentic traditional healing accessible to families across Coimbatore.</p>
               </div>
             </div>
 
-            <!-- Swarnapashnam Camp -->
-            <div class="camp_card">
-              <div class="camp_card_image">
-                <img src="assets/images/about/swarnapashnam-camp.png" alt="Swarnapashnam Camp for Children at Aathithya Welfare Centre">
-              </div>
-              <div class="camp_card_body">
-                <span class="camp_card_tag">Children's Wellness Camp</span>
-                <h2>Swarnapashnam Camp for Children (Ages 1–16)</h2>
-                <p>Swarnapashnam (Swarna Prashana) is an ancient Siddha and Ayurvedic wellness practice specially designed for children. It involves the careful administration of purified gold blended with select herbal formulations to support immunity, growth, memory, and overall development.</p>
-                <p>At Aathithya Wellness Centre, this sacred tradition is offered as a monthly camp conducted on <strong>Poosa Nathchitram</strong>, a highly auspicious timing believed to enhance the medicine's effectiveness according to Siddha wisdom.</p>
+            <div id="campDetailsList"></div>
 
-                <div class="row mt-4">
-                  <div class="col-lg-6">
-                    <h4 class="fw-bold">Benefits</h4>
-                    <ul class="info_list unordered_list_block">
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Enhances natural immunity in children</span>
-                      </li>
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Supports healthy growth and development</span>
-                      </li>
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Improves memory, concentration, and learning ability</span>
-                      </li>
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Helps reduce frequent infections and illnesses</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="camp_schedule_box">
-                      <h3>Camp Schedule</h3>
-                      <ul class="info_list unordered_list_block mb-0">
-                        <li>
-                          <span class="info_icon"><i class="fa-light fa-calendar"></i></span>
-                          <span class="info_text"><strong>Frequency:</strong> Monthly on Poosa Nathchitram</span>
-                        </li>
-                        <li>
-                          <span class="info_icon"><i class="fa-light fa-child"></i></span>
-                          <span class="info_text"><strong>Age Group:</strong> Children aged 1 to 16 years</span>
-                        </li>
-                        <li>
-                          <span class="info_icon"><i class="fa-light fa-location-dot"></i></span>
-                          <span class="info_text"><strong>Location:</strong> Aathithya Welfare Centre, Coimbatore</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="d-flex flex-wrap gap-3 mt-4">
-                  <a class="btn btn-primary" href="https://wa.me/+918925600489?text=Hi, I would like to book Swarnapashnam Camp for my child." target="_blank" rel="noopener noreferrer">
-                    <span class="btn_text" data-text="Book Swarnapashnam Camp">Book Swarnapashnam Camp</span>
-                    <span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>
-                  </a>
-                  <a class="btn btn-outline-primary" href="swarnapashnam.html">
-                    <span class="btn_text" data-text="Full Details">Full Details</span>
-                    <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Kalikkam Eye Camp -->
-            <div class="camp_card">
-              <div class="camp_card_image">
-                <img src="assets/images/about/kalikkam.jpg" alt="Free Eye Camp Kalikkam Siddha Method at Aathithya Welfare Centre">
-              </div>
-              <div class="camp_card_body">
-                <span class="camp_card_tag">Free Eye Care Camp</span>
-                <h2>Free Eye Camp – Kalikkam (Siddha Method)</h2>
-                <p>Kalikkam is a traditional Siddha external therapy used to support and protect eye health. Though applied around the eyes, it is a safe, non-invasive procedure performed by trained Siddha practitioners using time-tested herbal preparations.</p>
-                <p>Our free eye camps make this classical Siddha eye-care practice accessible to the community, helping reduce eye strain, balance body heat, and support natural eye function — especially valuable for those with prolonged screen exposure.</p>
-
-                <div class="row mt-4">
-                  <div class="col-lg-6">
-                    <h4 class="fw-bold">Benefits</h4>
-                    <ul class="info_list unordered_list_block">
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Helps reduce eye strain and tiredness</span>
-                      </li>
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Supports natural visual clarity</span>
-                      </li>
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Aids in cooling excess body heat</span>
-                      </li>
-                      <li>
-                        <span class="info_icon"><i class="fa-light fa-circle-check"></i></span>
-                        <span class="info_text">Promotes relaxation of eye-related nerves</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="camp_schedule_box">
-                      <h3>Camp Details</h3>
-                      <ul class="info_list unordered_list_block mb-0">
-                        <li>
-                          <span class="info_icon"><i class="fa-light fa-eye"></i></span>
-                          <span class="info_text"><strong>Therapy:</strong> Traditional Siddha Kalikkam eye care</span>
-                        </li>
-                        <li>
-                          <span class="info_icon"><i class="fa-light fa-users"></i></span>
-                          <span class="info_text"><strong>For:</strong> Adults experiencing eye strain or screen fatigue</span>
-                        </li>
-                        <li>
-                          <span class="info_icon"><i class="fa-light fa-location-dot"></i></span>
-                          <span class="info_text"><strong>Location:</strong> Aathithya Welfare Centre, Coimbatore</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="d-flex flex-wrap gap-3 mt-4">
-                  <a class="btn btn-primary" href="https://wa.me/+918925600489?text=Hi, I would like to book Kalikkam Eye Camp session." target="_blank" rel="noopener noreferrer">
-                    <span class="btn_text" data-text="Book Kalikkam Camp">Book Kalikkam Camp</span>
-                    <span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>
-                  </a>
-                  <a class="btn btn-outline-primary" href="kalikkam.html">
-                    <span class="btn_text" data-text="Full Details">Full Details</span>
-                    <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- How to Register -->
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mt-4">
               <div class="col-lg-10">
                 <div class="camp_schedule_box text-center">
-                  <h2 class="mb-3">How to Register for Today's Camp</h2>
-                  <p>Booking is simple — contact us via WhatsApp or phone to confirm your slot. Our team will guide you on camp timings, preparation, and any consultation requirements before your visit.</p>
-                  <div class="d-flex flex-wrap gap-3 justify-content-center mt-3">
-                    <a class="btn btn-primary" href="https://wa.me/+918925600489?text=Hi, I would like to book for today's camp at Aathithya Welfare Centre." target="_blank" rel="noopener noreferrer">
+                  <h2 class="mb-3">How to Register</h2>
+                  <p>Contact us via WhatsApp or phone to confirm your camp slot. Our team will guide you on timings and any consultation requirements.</p>
+                  <div class="d-flex flex-wrap gap-3 justify-content-center mt-3 camp_detail_card_actions">
+                    <a class="btn btn-primary camp_page_btn" href="https://wa.me/+918925600489?text=Hi, I would like to book for today's camp at Aathithya Welfare Centre." target="_blank" rel="noopener noreferrer">
                       <span class="btn_text" data-text="Book via WhatsApp">Book via WhatsApp</span>
                       <span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>
                     </a>
-                    <a class="btn btn-outline-primary" href="tel:+918925600489">
+                    <a class="btn btn-outline-primary camp_page_btn" href="tel:+918925600489">
                       <span class="btn_text" data-text="Call Us">Call Us</span>
                       <span class="btn_icon"><i class="fa-solid fa-phone"></i></span>
                     </a>
-                    <a class="btn btn-outline-primary" href="contact.html">
+                    <a class="btn btn-outline-primary camp_page_btn" href="contact.html">
                       <span class="btn_text" data-text="Contact Page">Contact Page</span>
                       <span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>
                     </a>
@@ -270,16 +122,12 @@
     <script>
       fetch("footer.html")
         .then(response => response.text())
-        .then(data => {
-          document.getElementById("footer").innerHTML = data;
-        });
+        .then(data => { document.getElementById("footer").innerHTML = data; });
     </script>
     <script>
       fetch("footer-contact.html")
         .then(response => response.text())
-        .then(data => {
-          document.getElementById("footer-contact").innerHTML = data;
-        });
+        .then(data => { document.getElementById("footer-contact").innerHTML = data; });
     </script>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -292,18 +140,7 @@
     <script src="assets/js/appear.min.js"></script>
     <script src="assets/js/odometer.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var dateEl = document.getElementById('todayCampPageDate');
-        if (dateEl) {
-          dateEl.textContent = new Date().toLocaleDateString('en-IN', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          });
-        }
-      });
-    </script>
+    <script src="assets/js/camp-data.js"></script>
+    <script src="assets/js/camps.js"></script>
   </body>
 </html>
