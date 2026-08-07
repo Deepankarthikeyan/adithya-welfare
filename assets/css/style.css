@@ -4087,6 +4087,15 @@ background-color: var(--bs-primary-bg-subtle);
 }
 .camp_popup_column .camp_image_frame {
   height: 135px;
+  margin: 10px 12px 0;
+  width: calc(100% - 24px);
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.camp_popup_column .camp_popup_image,
+.camp_popup_column .camp_uniform_image {
+  border-radius: 14px;
 }
 .camp_popup_column_body {
   padding: 12px 14px 14px;
