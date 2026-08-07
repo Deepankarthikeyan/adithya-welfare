@@ -4235,68 +4235,99 @@ background-color: var(--bs-primary-bg-subtle);
 /* Today's Camp Popup - End */
 
 /* Today's Camp Page - Start */
+#campDetailsList {
+  max-width: 860px;
+  margin: 0 auto;
+}
 .camp_detail_card {
   display: flex;
   align-items: stretch;
   background: #fff;
   border: 1px solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
+  border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   box-shadow: var(--bs-box-shadow);
 }
 .camp_detail_card_media {
-  flex: 0 0 42%;
-  max-width: 42%;
-  min-height: 280px;
+  flex: 0 0 32%;
+  max-width: 32%;
+  min-height: 180px;
 }
 .camp_detail_card_media img {
   width: 100%;
   height: 100%;
-  min-height: 280px;
+  min-height: 180px;
   object-fit: cover;
   display: block;
 }
 .camp_detail_card_body {
   flex: 1;
-  padding: 28px 32px;
+  padding: 16px 18px;
+}
+.camp_detail_card_body h2 {
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.camp_detail_card_body p {
+  font-size: 14px;
+  line-height: 1.45;
+  margin-bottom: 0;
 }
 .camp_detail_card_body .camp_schedule_highlight {
-  border-radius: 12px;
-  margin-bottom: 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
 }
 .camp_detail_card_body .camp_highlight_day {
-  font-size: 26px;
+  font-size: 18px;
 }
 .camp_detail_card_body .camp_highlight_date {
-  font-size: 20px;
+  font-size: 15px;
 }
 .camp_detail_card_body .camp_highlight_time {
-  font-size: 17px;
+  font-size: 13px;
+}
+.camp_detail_card_meta {
+  margin-top: 12px !important;
+}
+.camp_detail_card_meta h4 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.camp_detail_card_meta .info_list {
+  font-size: 14px;
 }
 .camp_card_tag {
   display: inline-block;
   background: var(--bs-primary-bg-subtle);
   color: var(--bs-primary);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 100px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .camp_schedule_box {
   background: var(--bs-primary-bg-subtle);
-  border-radius: 16px;
-  padding: 24px 28px;
+  border-radius: 12px;
+  padding: 14px 16px;
   margin-top: 0;
 }
 .camp_schedule_box h3 {
   color: var(--bs-primary);
-  margin-bottom: 12px;
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 .camp_detail_card_actions .btn,
 .camp_page_btn {
   transform: none !important;
+  font-size: 14px;
+}
+.camp_detail_card_actions .btn .btn_text,
+.camp_page_btn .btn_text {
+  padding: 6px 0 8px;
 }
 .camp_detail_card_actions .btn:hover,
 .camp_page_btn:hover {
@@ -4328,11 +4359,11 @@ background-color: var(--bs-primary-bg-subtle);
     min-height: 0;
   }
   .camp_detail_card_media img {
-    min-height: 220px;
-    height: 220px;
+    min-height: 160px;
+    height: 160px;
   }
   .camp_detail_card_body {
-    padding: 24px 20px;
+    padding: 16px 16px;
   }
 }
 /* Today's Camp Page - End */
