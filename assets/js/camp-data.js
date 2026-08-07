@@ -115,7 +115,7 @@ window.AathithyaCamps = {
         "Nasyam is a classical Siddha and Ayurvedic nasal therapy that administers medicated oils or preparations through the nostrils to support head, neck, and respiratory wellness.",
         "This camp offers authentic Siddha Nasyam treatment following traditional guidelines under expert supervision."
       ],
-      image: "assets/images/gallery/siddha-medicine-and-treatments.jpg",
+      image: "assets/images/about/nasyam-camp.jpg",
       whatsappMessage: "Hi, I would like to book Nasyam Siddha Medicine Camp.",
       detailLink: "authentic-siddha-treatment-aathitya-wellness-centre.html",
       benefits: [

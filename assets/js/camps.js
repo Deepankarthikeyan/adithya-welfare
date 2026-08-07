@@ -135,7 +135,7 @@
 
     if (display.image) {
       html +=
-        '<img class="camp_popup_image" src="' +
+        '<img class="camp_popup_image camp_uniform_image" src="' +
         escapeHtml(camp.image) +
         '" alt="' +
         escapeHtml(camp.title) +
@@ -270,7 +270,7 @@
     if (display.image) {
       html +=
         '<div class="camp_detail_card_media">' +
-        '<img src="' +
+        '<img class="camp_uniform_image" src="' +
         escapeHtml(camp.image) +
         '" alt="' +
         escapeHtml(camp.title) +
