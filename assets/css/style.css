@@ -4601,10 +4601,6 @@ background-color: var(--bs-primary-bg-subtle);
   font-size: 18px;
   margin-bottom: 10px;
 }
-.camp_detail_card_actions .btn:hover,
-.camp_page_btn:hover {
-  transform: translateY(-2px) !important;
-}
 .camp_detail_card_actions .btn:hover .btn_text,
 .camp_page_btn:hover .btn_text {
   transform: none !important;
