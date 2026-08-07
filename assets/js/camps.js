@@ -270,14 +270,17 @@
     var display = mergeDisplay(camp, "card");
 
     var html =
-      '<div class="camp_detail_card' +
+      '<div class="camp_detail_card camp_detail_card--reveal' +
       (display.image ? "" : " camp_detail_card--no-image") +
       '">';
 
     if (display.image) {
       html +=
         '<div class="camp_detail_card_media">' +
+        '<div class="camp_detail_card_media_inner">' +
         renderCampImage(camp, "") +
+        "</div>" +
+        '<div class="camp_detail_card_media_overlay" aria-hidden="true"></div>' +
         "</div>";
     }
 
@@ -378,6 +381,39 @@
     }
 
     list.innerHTML = camps.map(renderDetailCard).join("");
+    initCampCardAnimations();
+  }
+
+  function initCampCardAnimations() {
+    var cards = document.querySelectorAll("#campDetailsList .camp_detail_card--reveal");
+
+    if (!cards.length) {
+      return;
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      cards.forEach(function (card) {
+        card.classList.add("is-visible");
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    cards.forEach(function (card, index) {
+      card.style.setProperty("--camp-delay", index * 0.12 + "s");
+      observer.observe(card);
+    });
   }
 
   function initPopupModal() {
