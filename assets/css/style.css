@@ -4099,9 +4099,17 @@ background-color: var(--bs-primary-bg-subtle);
 }
 .camp_popup_buttons .btn .btn_text {
   padding: 8px 0 10px;
+  transform: none !important;
+  -webkit-transform: none !important;
+  transition: none;
+}
+.camp_popup_buttons .btn:hover .btn_text {
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 .camp_popup_buttons .btn .btn_text:before {
   display: none;
+  content: none;
 }
 .camp_popup_close {
   position: absolute;
