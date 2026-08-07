@@ -4357,10 +4357,18 @@ background-color: var(--bs-primary-bg-subtle);
   font-size: 13px;
   line-height: 1.45;
   margin-bottom: 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+}
+.camp_detail_card_description {
+  margin-bottom: 14px;
+}
+.camp_detail_card_description p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: var(--bs-body-color);
+}
+.camp_detail_card_description p:last-child {
+  margin-bottom: 0;
 }
 .camp_detail_card_body .camp_schedule_highlight {
   border-radius: 10px;
