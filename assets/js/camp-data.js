@@ -26,9 +26,9 @@ window.AathithyaCamps = {
 
   cardDisplayDefaults: {
     image: true,
-    day: false,
-    date: false,
-    time: false,
+    day: true,
+    date: true,
+    time: true,
     tag: true,
     title: true,
     summary: true,

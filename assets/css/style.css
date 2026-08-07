@@ -4521,8 +4521,10 @@ background-color: var(--bs-primary-bg-subtle);
   }
   .camp_detail_card_summary {
     font-size: 12px;
-    -webkit-line-clamp: 3;
     margin-bottom: 8px;
+  }
+  .camp_detail_card_description p {
+    font-size: 13px;
   }
 }
 /* Today's Camp Page - End */
