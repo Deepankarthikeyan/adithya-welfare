@@ -4048,29 +4048,11 @@ background-color: var(--bs-primary-bg-subtle);
   flex-direction: column;
   max-height: calc(100dvh - 24px);
 }
-.camp_popup_header {
-  padding: 16px 20px 0;
-  text-align: center;
-  flex-shrink: 0;
-}
-.camp_popup_badge {
-  display: block;
-  margin: 0;
-  background: none;
-  color: var(--bs-primary);
-  font-family: var(--bs-font-heading);
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.3;
-  letter-spacing: 0;
-  text-transform: none;
-  padding: 0;
-  border-radius: 0;
-}
 .camp_popup_grid {
   display: grid;
   gap: 0;
   flex-shrink: 0;
+  padding-top: 8px;
 }
 .camp_popup_grid.camp-cols-1 {
   grid-template-columns: 1fr;
@@ -4150,7 +4132,7 @@ background-color: var(--bs-primary-bg-subtle);
   display: block;
   font-family: var(--bs-font-heading);
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.1;
   margin: 0;
   letter-spacing: 0.02em;
@@ -4159,7 +4141,7 @@ background-color: var(--bs-primary-bg-subtle);
   display: block;
   font-family: var(--bs-font-heading);
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.15;
   margin: 10px 0 0;
 }
@@ -4167,7 +4149,7 @@ background-color: var(--bs-primary-bg-subtle);
   display: block;
   font-family: var(--bs-font-heading);
   font-size: 26px;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.15;
   margin: 10px 0 0;
 }
@@ -4390,36 +4372,36 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_detail_card_body .camp_schedule_flyer .camp_highlight_date {
   font-family: var(--bs-font-heading);
   font-size: 26px;
-  font-weight: 800;
+  font-weight: 900;
 }
 .camp_detail_card_body .camp_schedule_flyer .camp_highlight_day {
   font-family: var(--bs-font-heading);
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 900;
 }
 .camp_detail_card_body .camp_schedule_flyer .camp_highlight_time {
   font-family: var(--bs-font-heading);
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 900;
 }
 .camp_detail_card_body .camp_schedule_highlight--yellow .camp_highlight_date {
   font-family: var(--bs-font-heading);
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 900;
   display: block;
   margin-top: 0;
 }
 .camp_detail_card_body .camp_schedule_highlight--yellow .camp_highlight_day {
   font-family: var(--bs-font-heading);
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 900;
   display: block;
   margin-top: 6px;
 }
 .camp_detail_card_body .camp_schedule_highlight--yellow .camp_highlight_time {
   font-family: var(--bs-font-heading);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 900;
   display: block;
   margin-top: 6px;
 }
