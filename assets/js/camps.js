@@ -199,7 +199,9 @@
           escapeHtml(content.venueTamil) +
           "</p>"
         : "") +
-      '<div class="camp_popup_flyer_divider" aria-hidden="true"></div>' +
+      (content.venueTamil || content.line1Tamil || content.line2Tamil
+        ? '<div class="camp_popup_flyer_divider" aria-hidden="true"></div>'
+        : "") +
       (content.line1Tamil
         ? "<p>" + escapeHtml(content.line1Tamil) + "</p>"
         : "") +

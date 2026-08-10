@@ -74,9 +74,6 @@ window.AathithyaCamps = {
       popupImage: "assets/images/about/swarnapashnam-camp-photo.png",
       popupFlyerContent: {
         titleTamil: "ஸ்வர்ணபிராஷணம்",
-        venueTamil: "@ஆதித்யா வெல்பேர் ஃபார்ம் பிரைவேட் லிமிடெட்",
-        line1Tamil: "1-16 வயது குழந்தைகளுக்கான",
-        line2Tamil: "ஆயுர்வேத மருத்துவ முகாம்",
         dateNumber: "11th",
         dateMonthTamil: "ஆகஸ்ட்",
         time: "10 AM - 6 PM"

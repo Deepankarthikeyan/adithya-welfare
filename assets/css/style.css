@@ -4174,28 +4174,11 @@ background-color: var(--bs-primary-bg-subtle);
   background: rgba(0, 0, 0, 0.45);
 }
 .camp_popup_flyer_layout + .camp_popup_footer {
-  background: #1d4d34;
+  background: #fff;
   padding: 14px 16px 16px;
   flex-shrink: 0;
   position: relative;
   z-index: 2;
-}
-.camp_popup_flyer_layout + .camp_popup_footer .btn-primary {
-  --bs-btn-bg: #5a1820;
-  --bs-btn-border-color: #5a1820;
-  --bs-btn-hover-bg: #451218;
-  --bs-btn-hover-border-color: #451218;
-  --bs-btn-active-bg: #451218;
-  --bs-btn-active-border-color: #451218;
-}
-.camp_popup_flyer_layout + .camp_popup_footer .btn-outline-primary {
-  border-color: rgba(255, 255, 255, 0.75);
-  color: #fff;
-}
-.camp_popup_flyer_layout + .camp_popup_footer .btn-outline-primary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-  border-color: #fff;
 }
 .camp_popup_column {
   display: flex;
