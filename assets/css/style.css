@@ -2806,28 +2806,12 @@ button[class*=-dark]:hover {
 .page_banner--with-image {
   padding: 40px 0 48px;
 }
-.swarnapashnam_intro_section {
-  display: flex;
-  flex-direction: column;
+.swarnapashnam_flyer_wrapper {
+  max-width: 420px;
+  margin: 0 auto 40px;
+  padding: 0 15px;
 }
-.swarnapashnam_intro_text {
-  margin-bottom: 20px;
-}
-.swarnapashnam_banner_image {
-  order: 3;
-  max-width: 360px;
-  margin: 0 auto 28px;
-}
-.swarnapashnam_intro_section > h2 {
-  order: 1;
-}
-.swarnapashnam_intro_section > .swarnapashnam_intro_text {
-  order: 2;
-}
-.swarnapashnam_intro_section > .details_content {
-  order: 4;
-}
-.swarnapashnam_banner_image img {
+.swarnapashnam_flyer_wrapper img {
   display: block;
   width: 100%;
   height: auto;
@@ -2835,14 +2819,9 @@ button[class*=-dark]:hover {
   box-shadow: 0 16px 36px rgba(65, 19, 18, 0.14);
 }
 @media screen and (max-width: 991px) {
-  .page_banner--with-image .page_title {
-    font-size: 42px;
-  }
-  .page_banner--with-image h2 {
-    font-size: 20px;
-  }
-  .swarnapashnam_banner_image {
-    max-width: 280px;
+  .swarnapashnam_flyer_wrapper {
+    max-width: 300px;
+    margin-bottom: 30px;
   }
 }
 
