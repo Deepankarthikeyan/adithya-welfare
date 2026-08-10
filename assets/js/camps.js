@@ -13,6 +13,12 @@
     });
   }
 
+  function getPopupCamps() {
+    return config.camps.filter(function (camp) {
+      return camp.active && camp.showInPopup !== false;
+    });
+  }
+
   function getEventSchedule(camp) {
     if (camp && camp.date) {
       return camp;
@@ -152,48 +158,62 @@
 
   function renderPopupColumn(camp) {
     var display = mergeDisplay(camp, "popup");
-    var html = '<div class="camp_popup_column">';
+    var isFlyer = !!camp.popupFlyer;
+    var html =
+      '<div class="camp_popup_column' +
+      (isFlyer ? " camp_popup_column--flyer" : "") +
+      '">';
 
     if (display.image) {
-      html += renderCampImage(camp, "camp_popup_image");
+      html += renderCampImage(
+        camp,
+        isFlyer ? "camp_popup_image camp_popup_image--flyer" : "camp_popup_image"
+      );
     }
 
-    html += '<div class="camp_popup_column_body">';
+    if (!isFlyer) {
+      html += '<div class="camp_popup_column_body">';
 
-    if (display.title) {
-      html += renderCampTitle(camp, "h3", "camp_popup_col_title");
-    }
-    if (display.summary) {
-      html +=
-        '<p class="camp_popup_col_text">' +
-        escapeHtml(camp.shortDescription) +
-        "</p>";
+      if (display.title) {
+        html += renderCampTitle(camp, "h3", "camp_popup_col_title");
+      }
+      if (display.summary) {
+        html +=
+          '<p class="camp_popup_col_text">' +
+          escapeHtml(camp.shortDescription) +
+          "</p>";
+      }
+
+      html += "</div>";
     }
 
-    html += "</div></div>";
+    html += "</div>";
     return html;
   }
 
   function renderPopup() {
     var inner = document.getElementById("campPopupInner");
     var dialog = document.querySelector(".camp_popup_modal .modal-dialog");
-    var camps = getActiveCamps();
+    var camps = getPopupCamps();
 
     if (!inner || camps.length === 0) {
       return false;
     }
 
+    var isFlyerPopup = camps.length === 1 && camps[0].popupFlyer;
     var colCount = Math.min(camps.length, 3);
     var columnsHtml = camps
       .slice(0, 3)
       .map(renderPopupColumn)
       .join("");
 
-    var scheduleHtml = renderScheduleHighlight(
-      config.eventSchedule,
-      getScheduleDisplay("popup"),
-      "camp_schedule_highlight--yellow"
-    );
+    var scheduleHtml = isFlyerPopup
+      ? ""
+      : renderScheduleHighlight(
+          config.eventSchedule,
+          getScheduleDisplay("popup"),
+          "camp_schedule_highlight--yellow"
+        );
 
     inner.innerHTML =
       '<button type="button" class="camp_popup_close" data-bs-dismiss="modal" aria-label="Close">' +
@@ -201,6 +221,7 @@
       "</button>" +
       '<div class="camp_popup_grid camp-cols-' +
       colCount +
+      (isFlyerPopup ? " camp_popup_grid--flyer" : "") +
       '">' +
       columnsHtml +
       "</div>" +
@@ -211,7 +232,8 @@
       '<div class="camp_popup_buttons">' +
       '<a class="btn btn-primary" href="' +
       waLink(
-        "Hi, I would like to book for today's camp at Aathithya Welfare Centre."
+        camps[0].whatsappMessage ||
+          "Hi, I would like to book for today's camp at Aathithya Welfare Centre."
       ) +
       '" target="_blank" rel="noopener noreferrer">' +
       '<span class="btn_text" data-text="Book Now">Book Now</span>' +
@@ -225,8 +247,16 @@
       "</div>";
 
     if (dialog) {
-      dialog.classList.remove("camp-cols-1", "camp-cols-2", "camp-cols-3");
+      dialog.classList.remove(
+        "camp-cols-1",
+        "camp-cols-2",
+        "camp-cols-3",
+        "camp_popup_dialog--flyer"
+      );
       dialog.classList.add("camp-cols-" + colCount);
+      if (isFlyerPopup) {
+        dialog.classList.add("camp_popup_dialog--flyer");
+      }
     }
 
     return true;

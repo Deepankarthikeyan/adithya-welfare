@@ -4030,6 +4030,9 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_modal .modal-dialog.camp-cols-3 {
   max-width: 960px;
 }
+.camp_popup_modal .modal-dialog.camp_popup_dialog--flyer {
+  max-width: 420px;
+}
 .camp_popup_modal .modal-content {
   border: none;
   border-radius: 20px;
@@ -4062,6 +4065,29 @@ background-color: var(--bs-primary-bg-subtle);
 }
 .camp_popup_grid.camp-cols-3 {
   grid-template-columns: repeat(3, 1fr);
+}
+.camp_popup_grid.camp_popup_grid--flyer {
+  padding-top: 0;
+}
+.camp_popup_column--flyer {
+  border-right: none;
+}
+.camp_popup_column--flyer .camp_image_frame {
+  height: auto;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+}
+.camp_popup_column--flyer .camp_popup_image--flyer,
+.camp_popup_column--flyer .camp_uniform_image {
+  width: 100%;
+  height: auto;
+  max-height: min(72dvh, 640px);
+  object-fit: contain;
+  border-radius: 0;
+}
+.camp_popup_grid--flyer + .camp_popup_footer {
+  padding-top: 0;
 }
 .camp_popup_column {
   display: flex;

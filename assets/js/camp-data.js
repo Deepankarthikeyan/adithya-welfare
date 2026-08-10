@@ -4,6 +4,10 @@
  * CAMP VISIBILITY
  *   active: true  → show camp in popup and learn-more page
  *   active: false → hide entire camp
+ *   showInPopup: false → hide from homepage popup only (still on learn-more page)
+ *
+ * POPUP FLYER
+ *   popupFlyer: true → show full flyer image only (no title/schedule block)
  *
  * EVENT SCHEDULE (yellow date / day / time block)
  *   Edit eventSchedule for the shared camp date shown in the homepage popup only.
@@ -16,9 +20,9 @@ window.AathithyaCamps = {
   whatsappNumber: "918925600489",
 
   eventSchedule: {
-    date: "08th August 2026",
-    day: "Saturday",
-    dayTamil: "சனிக்கிழமை",
+    date: "11th August 2026",
+    day: "Tuesday",
+    dayTamil: "செவ்வாய்",
     time: "10 AM to 6 PM"
   },
 
@@ -46,15 +50,50 @@ window.AathithyaCamps = {
   },
 
   popupScheduleDisplay: {
-    date: true,
-    day: true,
-    time: true
+    date: false,
+    day: false,
+    time: false
   },
 
   camps: [
     {
+      id: "swarnapashnam-camp",
+      active: true,
+      showInPopup: true,
+      popupFlyer: true,
+      title: "Swarnaprashanam Camp for Children",
+      titleTamil: "ஸ்வர்ணபிராஷணம்",
+      tag: "Children's Ayurveda Camp",
+      shortDescription:
+        "Ayurveda medical camp for children aged 1–16 at Aathithya Welfare Farm.",
+      description: [
+        "Swarnaprashanam (Swarna Prashana) is an ancient Siddha and Ayurvedic wellness practice specially designed for children. It involves the careful administration of purified gold blended with select herbal formulations to support immunity, growth, memory, and overall development.",
+        "At Aathithya Welfare Centre, this sacred tradition is offered as a camp for children aged 1 to 16 years under expert supervision."
+      ],
+      image: "assets/images/about/swarnapashnam-camp-flyer.png",
+      whatsappMessage:
+        "Hi, I would like to book Swarnaprashanam Camp for my child.",
+      detailLink: "swarnapashnam.html",
+      popupDisplay: {
+        image: true,
+        title: false,
+        summary: false
+      },
+      benefits: [
+        "Enhances natural immunity in children",
+        "Supports healthy growth and development",
+        "Improves memory, concentration, and learning ability",
+        "Helps reduce frequent infections and illnesses"
+      ],
+      scheduleItems: [
+        { icon: "fa-child", label: "Age Group", value: "Children aged 1 to 16 years" },
+        { icon: "fa-location-dot", label: "Location", value: "Aathithya Welfare Centre, Coimbatore" }
+      ]
+    },
+    {
       id: "kalikkam-eye-camp",
       active: true,
+      showInPopup: false,
       title: "Kalikkam – Eye Protection Camp",
       titleTamil: "கலிக்கம் - கண் பாதுகாப்பு முகாம்",
       tag: "Siddha Eye Care Camp",
@@ -81,6 +120,7 @@ window.AathithyaCamps = {
     {
       id: "foot-reflexology-camp",
       active: true,
+      showInPopup: false,
       title: "Foot Reflexology Therapy",
       titleTamil: "பாத அழுத்த சிகிச்சை",
       tag: "Foot Pressure Therapy Camp",
@@ -107,6 +147,7 @@ window.AathithyaCamps = {
     {
       id: "nasyam-camp",
       active: true,
+      showInPopup: false,
       title: "Nasyam – Siddha Medicine Camp",
       titleTamil: "நசியம் - சித்த மருத்துவ முகாம்",
       tag: "Siddha Nasal Therapy Camp",
