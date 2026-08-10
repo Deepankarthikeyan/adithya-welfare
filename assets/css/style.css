@@ -4044,12 +4044,17 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_modal .modal-body {
   padding: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 .camp_popup_inner {
   position: relative;
   display: flex;
   flex-direction: column;
   max-height: calc(100dvh - 24px);
+  min-height: 0;
+  overflow: hidden;
 }
 .camp_popup_grid {
   display: grid;
@@ -4069,7 +4074,10 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_flyer_layout {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .camp_popup_flyer_media .camp_image_frame {
   margin: 0;
@@ -4082,8 +4090,8 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_flyer_media .camp_uniform_image {
   width: 100%;
   height: auto;
-  min-height: 220px;
-  max-height: min(44dvh, 300px);
+  min-height: 180px;
+  max-height: min(34dvh, 240px);
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -4168,6 +4176,17 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_flyer_layout + .camp_popup_footer {
   background: #1d4d34;
   padding: 14px 16px 16px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.camp_popup_flyer_layout + .camp_popup_footer .btn-primary {
+  --bs-btn-bg: #5a1820;
+  --bs-btn-border-color: #5a1820;
+  --bs-btn-hover-bg: #451218;
+  --bs-btn-hover-border-color: #451218;
+  --bs-btn-active-bg: #451218;
+  --bs-btn-active-border-color: #451218;
 }
 .camp_popup_flyer_layout + .camp_popup_footer .btn-outline-primary {
   border-color: rgba(255, 255, 255, 0.75);
@@ -4333,6 +4352,8 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_footer {
   padding: 14px 20px 18px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 .camp_popup_buttons {
   display: flex;
