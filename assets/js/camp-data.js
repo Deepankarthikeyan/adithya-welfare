@@ -72,8 +72,8 @@ window.AathithyaCamps = {
         "Swarnaprashanam (Swarna Prashana) is an ancient Siddha and Ayurvedic wellness practice specially designed for children. It involves the careful administration of purified gold blended with select herbal formulations to support immunity, growth, memory, and overall development.",
         "At Aathithya Welfare Centre, this sacred tradition is offered as a camp for children aged 1 to 16 years under expert supervision."
       ],
-      image: "assets/images/about/swarnapashnam-camp-photo.png",
-      popupImage: "assets/images/about/swarnapashnam-camp-flyer.png",
+      image: "assets/images/about/Swarnapashnam.jpeg",
+      popupImage: "assets/images/about/Swarnapashnam.jpeg",
       whatsappMessage:
         "Hi, I would like to book Swarnaprashanam Camp for my child.",
       detailLink: "swarnapashnam.html",
