@@ -2808,7 +2808,7 @@ button[class*=-dark]:hover {
 }
 .swarnapashnam_banner_image {
   max-width: 360px;
-  margin: 0 auto 24px;
+  margin: 8px auto 28px;
 }
 .swarnapashnam_banner_image img {
   display: block;
