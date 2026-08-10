@@ -2792,6 +2792,17 @@ button[class*=-dark]:hover {
 [class*=_details_section] .video_wrapper {
   margin-bottom: 40px;
 }
+.camp_detail_flyer_image {
+  margin: 0 auto 32px;
+  max-width: 420px;
+}
+.camp_detail_flyer_image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(65, 19, 18, 0.12);
+}
 
 .details_info_title {
   font-size: 24px;
