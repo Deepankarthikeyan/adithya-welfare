@@ -2806,13 +2806,9 @@ button[class*=-dark]:hover {
 .page_banner--with-image {
   padding: 40px 0 48px;
 }
-.swarnapashnam_flyer_section {
-  padding: 0 0 24px;
-  background-color: var(--bs-primary-bg-subtle);
-}
 .swarnapashnam_banner_image {
   max-width: 360px;
-  margin: 0 auto;
+  margin: 0 auto 24px;
 }
 .swarnapashnam_banner_image img {
   display: block;
