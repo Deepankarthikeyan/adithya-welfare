@@ -138,7 +138,7 @@
     return '<div class="' + classNames + '">' + parts.join("") + "</div>";
   }
 
-  function renderCampImage(camp, altClass) {
+  function renderCampImage(camp, altClass, imageSrc) {
     var imgClass = "camp_uniform_image";
     if (altClass) {
       imgClass += " " + altClass;
@@ -148,10 +148,66 @@
       '<img class="' +
       imgClass +
       '" src="' +
-      escapeHtml(camp.image) +
+      escapeHtml(imageSrc || camp.image) +
       '" alt="' +
       escapeHtml(camp.title) +
       '">' +
+      "</div>"
+    );
+  }
+
+  function renderFlyerPopupLayout(camp) {
+    var content = camp.popupFlyerContent || {};
+    var schedule = getEventSchedule(camp);
+    var dateNumber = content.dateNumber || schedule.date || "";
+    var dateMonthTamil =
+      content.dateMonthTamil || schedule.dayTamil || schedule.day || "";
+    var time = content.time || schedule.time || "";
+    var imageSrc = camp.popupImage || camp.image;
+
+    return (
+      '<div class="camp_popup_flyer_layout">' +
+      '<div class="camp_popup_flyer_media">' +
+      renderCampImage(camp, "camp_popup_flyer_photo", imageSrc) +
+      "</div>" +
+      '<div class="camp_popup_flyer_details">' +
+      '<div class="camp_popup_flyer_date">' +
+      (dateNumber
+        ? '<span class="camp_popup_flyer_date_num">' +
+          escapeHtml(dateNumber) +
+          "</span>"
+        : "") +
+      (dateMonthTamil
+        ? '<span class="camp_popup_flyer_date_month">' +
+          escapeHtml(dateMonthTamil) +
+          "</span>"
+        : "") +
+      (time
+        ? '<span class="camp_popup_flyer_date_time">' +
+          escapeHtml(time) +
+          "</span>"
+        : "") +
+      "</div>" +
+      '<div class="camp_popup_flyer_content">' +
+      (content.titleTamil || camp.titleTamil
+        ? "<h3>" +
+          escapeHtml(content.titleTamil || camp.titleTamil) +
+          "</h3>"
+        : "") +
+      (content.venueTamil
+        ? '<p class="camp_popup_flyer_venue">' +
+          escapeHtml(content.venueTamil) +
+          "</p>"
+        : "") +
+      '<div class="camp_popup_flyer_divider" aria-hidden="true"></div>' +
+      (content.line1Tamil
+        ? "<p>" + escapeHtml(content.line1Tamil) + "</p>"
+        : "") +
+      (content.line2Tamil
+        ? "<p>" + escapeHtml(content.line2Tamil) + "</p>"
+        : "") +
+      "</div>" +
+      "</div>" +
       "</div>"
     );
   }
@@ -202,10 +258,15 @@
 
     var isFlyerPopup = camps.length === 1 && camps[0].popupFlyer;
     var colCount = Math.min(camps.length, 3);
-    var columnsHtml = camps
-      .slice(0, 3)
-      .map(renderPopupColumn)
-      .join("");
+    var columnsHtml = isFlyerPopup
+      ? renderFlyerPopupLayout(camps[0])
+      : camps
+          .slice(0, 3)
+          .map(renderPopupColumn)
+          .join("");
+    var learnMoreLink = isFlyerPopup
+      ? camps[0].detailLink || "today-camp.html"
+      : "today-camp.html";
 
     var scheduleHtml = isFlyerPopup
       ? ""
@@ -219,12 +280,13 @@
       '<button type="button" class="camp_popup_close" data-bs-dismiss="modal" aria-label="Close">' +
       '<i class="fa-solid fa-xmark"></i>' +
       "</button>" +
-      '<div class="camp_popup_grid camp-cols-' +
-      colCount +
-      (isFlyerPopup ? " camp_popup_grid--flyer" : "") +
-      '">' +
-      columnsHtml +
-      "</div>" +
+      (isFlyerPopup
+        ? columnsHtml
+        : '<div class="camp_popup_grid camp-cols-' +
+          colCount +
+          '">' +
+          columnsHtml +
+          "</div>") +
       (scheduleHtml
         ? '<div class="camp_popup_shared_schedule">' + scheduleHtml + "</div>"
         : "") +
@@ -239,7 +301,9 @@
       '<span class="btn_text" data-text="Book Now">Book Now</span>' +
       '<span class="btn_icon"><i class="fa-brands fa-whatsapp"></i></span>' +
       "</a>" +
-      '<a class="btn btn-outline-primary" href="today-camp.html">' +
+      '<a class="btn btn-outline-primary" href="' +
+      escapeHtml(learnMoreLink) +
+      '">' +
       '<span class="btn_text" data-text="Learn More">Learn More</span>' +
       '<span class="btn_icon"><i class="fa-solid fa-arrow-up-right"></i></span>' +
       "</a>" +

@@ -7,7 +7,7 @@
  *   showInPopup: false → hide from homepage popup only (still on learn-more page)
  *
  * POPUP FLYER
- *   popupFlyer: true → show full flyer image only (no title/schedule block)
+ *   popupFlyer: true → photo on top with styled details below (popupImage + popupFlyerContent)
  *
  * EVENT SCHEDULE (yellow date / day / time block)
  *   Edit eventSchedule for the shared camp date shown in the homepage popup only.
@@ -70,7 +70,17 @@ window.AathithyaCamps = {
         "Swarnaprashanam (Swarna Prashana) is an ancient Siddha and Ayurvedic wellness practice specially designed for children. It involves the careful administration of purified gold blended with select herbal formulations to support immunity, growth, memory, and overall development.",
         "At Aathithya Welfare Centre, this sacred tradition is offered as a camp for children aged 1 to 16 years under expert supervision."
       ],
-      image: "assets/images/about/swarnapashnam-camp-flyer.png",
+      image: "assets/images/about/swarnapashnam-camp-photo.png",
+      popupImage: "assets/images/about/swarnapashnam-camp-photo.png",
+      popupFlyerContent: {
+        titleTamil: "ஸ்வர்ணபிராஷணம்",
+        venueTamil: "@ஆதித்யா வெல்பேர் ஃபார்ம் பிரைவேட் லிமிடெட்",
+        line1Tamil: "1-16 வயது குழந்தைகளுக்கான",
+        line2Tamil: "ஆயுர்வேத மருத்துவ முகாம்",
+        dateNumber: "11th",
+        dateMonthTamil: "ஆகஸ்ட்",
+        time: "10 AM - 6 PM"
+      },
       whatsappMessage:
         "Hi, I would like to book Swarnaprashanam Camp for my child.",
       detailLink: "swarnapashnam.html",
