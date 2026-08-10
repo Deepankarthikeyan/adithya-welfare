@@ -157,13 +157,29 @@
   }
 
   function renderFlyerPopupLayout(camp) {
+    var imageSrc = camp.popupImage || camp.image;
+    var imageOnly = !!camp.popupFlyerImageOnly;
+
+    if (imageOnly) {
+      return (
+        '<div class="camp_popup_flyer_layout camp_popup_flyer_layout--image-only">' +
+        '<div class="camp_popup_flyer_image_wrap">' +
+        '<img class="camp_popup_flyer_full_image" src="' +
+        escapeHtml(imageSrc) +
+        '" alt="' +
+        escapeHtml(camp.title) +
+        '">' +
+        "</div>" +
+        "</div>"
+      );
+    }
+
     var content = camp.popupFlyerContent || {};
     var schedule = getEventSchedule(camp);
     var dateNumber = content.dateNumber || schedule.date || "";
     var dateMonthTamil =
       content.dateMonthTamil || schedule.dayTamil || schedule.day || "";
     var time = content.time || schedule.time || "";
-    var imageSrc = camp.popupImage || camp.image;
 
     return (
       '<div class="camp_popup_flyer_layout">' +
@@ -317,15 +333,91 @@
         "camp-cols-1",
         "camp-cols-2",
         "camp-cols-3",
-        "camp_popup_dialog--flyer"
+        "camp_popup_dialog--flyer",
+        "camp_popup_dialog--flyer-image-only"
       );
       dialog.classList.add("camp-cols-" + colCount);
       if (isFlyerPopup) {
         dialog.classList.add("camp_popup_dialog--flyer");
+        if (camps[0].popupFlyerImageOnly) {
+          dialog.classList.add("camp_popup_dialog--flyer-image-only");
+          bindFlyerPopupImageSizing();
+        }
       }
     }
 
     return true;
+  }
+
+  function sizeFlyerPopupImage() {
+    var wrap = document.querySelector(".camp_popup_flyer_image_wrap");
+    var image = document.querySelector(".camp_popup_flyer_full_image");
+    var footer = document.querySelector(
+      ".camp_popup_flyer_layout--image-only + .camp_popup_footer"
+    );
+    var dialog = document.querySelector(
+      ".camp_popup_modal .modal-dialog.camp_popup_dialog--flyer-image-only"
+    );
+
+    if (!wrap || !image || !image.naturalWidth || !image.naturalHeight) {
+      return;
+    }
+
+    var footerHeight = footer ? footer.offsetHeight : 0;
+    var viewportPadding = 32;
+    var availableHeight = Math.max(
+      window.innerHeight - footerHeight - viewportPadding,
+      180
+    );
+    var availableWidth = dialog
+      ? Math.max(dialog.clientWidth - 8, 200)
+      : Math.min(window.innerWidth - 32, 340);
+
+    var scale = Math.min(
+      availableWidth / image.naturalWidth,
+      availableHeight / image.naturalHeight,
+      1
+    );
+
+    var displayWidth = Math.floor(image.naturalWidth * scale);
+    var displayHeight = Math.floor(image.naturalHeight * scale);
+
+    wrap.style.maxHeight = displayHeight + "px";
+    image.style.width = displayWidth + "px";
+    image.style.height = displayHeight + "px";
+    image.style.maxWidth = "100%";
+    image.style.maxHeight = displayHeight + "px";
+  }
+
+  function bindFlyerPopupImageSizing() {
+    var image = document.querySelector(".camp_popup_flyer_full_image");
+    if (!image) {
+      return;
+    }
+
+    var resizeHandler = function () {
+      sizeFlyerPopupImage();
+    };
+
+    if (image.complete) {
+      sizeFlyerPopupImage();
+    } else {
+      image.addEventListener("load", sizeFlyerPopupImage, { once: true });
+    }
+
+    window.addEventListener("resize", resizeHandler);
+    window.addEventListener("orientationchange", resizeHandler);
+
+    var modalEl = document.getElementById("todayCampModal");
+    if (modalEl) {
+      modalEl.addEventListener(
+        "shown.bs.modal",
+        function () {
+          sizeFlyerPopupImage();
+        },
+        { once: true }
+      );
+    }
   }
 
   function renderBenefitsList(benefits) {

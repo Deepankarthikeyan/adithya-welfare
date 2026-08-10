@@ -2792,6 +2792,17 @@ button[class*=-dark]:hover {
 [class*=_details_section] .video_wrapper {
   margin-bottom: 40px;
 }
+.camp_detail_flyer_image {
+  margin: 0 auto 32px;
+  max-width: 420px;
+}
+.camp_detail_flyer_image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(65, 19, 18, 0.12);
+}
 
 .details_info_title {
   font-size: 24px;
@@ -4033,6 +4044,14 @@ background-color: var(--bs-primary-bg-subtle);
 .camp_popup_modal .modal-dialog.camp_popup_dialog--flyer {
   max-width: 420px;
 }
+.camp_popup_modal .modal-dialog.camp_popup_dialog--flyer-image-only {
+  max-width: 340px;
+  width: calc(100% - 24px);
+}
+.camp_popup_inner:has(.camp_popup_flyer_layout--image-only) {
+  overflow: hidden;
+  max-height: calc(100dvh - 24px);
+}
 .camp_popup_modal .modal-content {
   border: none;
   border-radius: 20px;
@@ -4096,6 +4115,45 @@ background-color: var(--bs-primary-bg-subtle);
   object-position: center top;
   display: block;
   border-radius: 0;
+}
+.camp_popup_flyer_layout--image-only {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f2ea;
+  padding: 0;
+}
+.camp_popup_flyer_image_wrap {
+  width: 100%;
+  height: 100%;
+  max-height: calc(100dvh - 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.camp_popup_flyer_full_image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100dvh - 150px);
+  object-fit: contain;
+  object-position: center top;
+}
+.camp_popup_inner:has(.camp_popup_flyer_layout--image-only) .camp_popup_close {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+}
+.camp_popup_flyer_layout--image-only + .camp_popup_footer {
+  background: #fff;
+  padding: 10px 12px 12px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 .camp_popup_flyer_details {
   background: #5a1820;
@@ -4398,6 +4456,16 @@ background-color: var(--bs-primary-bg-subtle);
   .camp_popup_modal .modal-dialog.camp-cols-3 {
     max-width: calc(100% - 24px);
     margin: 12px;
+  }
+  .camp_popup_modal .modal-dialog.camp_popup_dialog--flyer-image-only {
+    max-width: min(300px, calc(100% - 24px));
+  }
+  .camp_popup_flyer_image_wrap,
+  .camp_popup_flyer_full_image {
+    max-height: calc(100dvh - 165px);
+  }
+  .camp_popup_flyer_layout--image-only + .camp_popup_footer {
+    padding: 8px 10px 10px;
   }
   .camp_popup_grid.camp-cols-2,
   .camp_popup_grid.camp-cols-3 {
