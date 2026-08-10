@@ -7,7 +7,8 @@
  *   showInPopup: false → hide from homepage popup only (still on learn-more page)
  *
  * POPUP FLYER
- *   popupFlyer: true → photo on top with styled details below (popupImage + popupFlyerContent)
+ *   popupFlyer: true → full flyer image in popup (popupImage)
+ *   popupFlyerImageOnly: true → show only the image + buttons (no text block below)
  *
  * EVENT SCHEDULE (yellow date / day / time block)
  *   Edit eventSchedule for the shared camp date shown in the homepage popup only.
@@ -61,6 +62,7 @@ window.AathithyaCamps = {
       active: true,
       showInPopup: true,
       popupFlyer: true,
+      popupFlyerImageOnly: true,
       title: "Swarnaprashanam Camp for Children",
       titleTamil: "ஸ்வர்ணபிராஷணம்",
       tag: "Children's Ayurveda Camp",
@@ -71,13 +73,7 @@ window.AathithyaCamps = {
         "At Aathithya Welfare Centre, this sacred tradition is offered as a camp for children aged 1 to 16 years under expert supervision."
       ],
       image: "assets/images/about/swarnapashnam-camp-photo.png",
-      popupImage: "assets/images/about/swarnapashnam-camp-photo.png",
-      popupFlyerContent: {
-        titleTamil: "ஸ்வர்ணபிராஷணம்",
-        dateNumber: "11th",
-        dateMonthTamil: "ஆகஸ்ட்",
-        time: "10 AM - 6 PM"
-      },
+      popupImage: "assets/images/about/swarnapashnam-camp-flyer.png",
       whatsappMessage:
         "Hi, I would like to book Swarnaprashanam Camp for my child.",
       detailLink: "swarnapashnam.html",

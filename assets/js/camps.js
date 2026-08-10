@@ -157,13 +157,25 @@
   }
 
   function renderFlyerPopupLayout(camp) {
+    var imageSrc = camp.popupImage || camp.image;
+    var imageOnly = !!camp.popupFlyerImageOnly;
+
+    if (imageOnly) {
+      return (
+        '<div class="camp_popup_flyer_layout camp_popup_flyer_layout--image-only">' +
+        '<div class="camp_popup_flyer_media">' +
+        renderCampImage(camp, "camp_popup_flyer_photo", imageSrc) +
+        "</div>" +
+        "</div>"
+      );
+    }
+
     var content = camp.popupFlyerContent || {};
     var schedule = getEventSchedule(camp);
     var dateNumber = content.dateNumber || schedule.date || "";
     var dateMonthTamil =
       content.dateMonthTamil || schedule.dayTamil || schedule.day || "";
     var time = content.time || schedule.time || "";
-    var imageSrc = camp.popupImage || camp.image;
 
     return (
       '<div class="camp_popup_flyer_layout">' +
@@ -317,11 +329,15 @@
         "camp-cols-1",
         "camp-cols-2",
         "camp-cols-3",
-        "camp_popup_dialog--flyer"
+        "camp_popup_dialog--flyer",
+        "camp_popup_dialog--flyer-image-only"
       );
       dialog.classList.add("camp-cols-" + colCount);
       if (isFlyerPopup) {
         dialog.classList.add("camp_popup_dialog--flyer");
+        if (camps[0].popupFlyerImageOnly) {
+          dialog.classList.add("camp_popup_dialog--flyer-image-only");
+        }
       }
     }
 
