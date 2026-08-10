@@ -2803,6 +2803,31 @@ button[class*=-dark]:hover {
   border-radius: 12px;
   box-shadow: 0 12px 32px rgba(65, 19, 18, 0.12);
 }
+.page_banner--with-image {
+  padding: 40px 0 48px;
+}
+.swarnapashnam_banner_image {
+  max-width: 340px;
+  margin: 0 auto;
+}
+.swarnapashnam_banner_image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(65, 19, 18, 0.14);
+}
+@media screen and (max-width: 991px) {
+  .page_banner--with-image .page_title {
+    font-size: 42px;
+  }
+  .page_banner--with-image h2 {
+    font-size: 20px;
+  }
+  .swarnapashnam_banner_image {
+    max-width: 280px;
+  }
+}
 
 .details_info_title {
   font-size: 24px;
