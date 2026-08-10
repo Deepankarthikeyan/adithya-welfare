@@ -163,9 +163,11 @@
     if (imageOnly) {
       return (
         '<div class="camp_popup_flyer_layout camp_popup_flyer_layout--image-only">' +
-        '<div class="camp_popup_flyer_media">' +
-        renderCampImage(camp, "camp_popup_flyer_photo", imageSrc) +
-        "</div>" +
+        '<img class="camp_popup_flyer_full_image" src="' +
+        escapeHtml(imageSrc) +
+        '" alt="' +
+        escapeHtml(camp.title) +
+        '">' +
         "</div>"
       );
     }
