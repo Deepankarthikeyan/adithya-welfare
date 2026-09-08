@@ -2830,6 +2830,11 @@ button[class*=-dark]:hover {
   border-radius: 14px;
   box-shadow: 0 16px 36px rgba(65, 19, 18, 0.14);
 }
+.kalikkam_certified_section {
+  background-color: #faf7f4;
+  border-top: 1px solid rgba(65, 19, 18, 0.08);
+  border-bottom: 1px solid rgba(65, 19, 18, 0.08);
+}
 @media screen and (max-width: 991px) {
   .swarnapashnam_flyer_wrapper {
     max-width: 300px;
