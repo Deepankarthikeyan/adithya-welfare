@@ -2818,10 +2818,26 @@ button[class*=-dark]:hover {
   border-radius: 14px;
   box-shadow: 0 16px 36px rgba(65, 19, 18, 0.14);
 }
+.kalikkam_certificate_wrapper {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  padding: 0 15px;
+}
+.kalikkam_certificate_wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(65, 19, 18, 0.14);
+}
 @media screen and (max-width: 991px) {
   .swarnapashnam_flyer_wrapper {
     max-width: 300px;
     margin-bottom: 30px;
+  }
+  .kalikkam_certificate_wrapper {
+    max-width: 100%;
+    margin-bottom: 32px;
   }
 }
 
